@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun 🌸</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Dancing+Script:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Efek latar -->
+  <div id="petals"></div>
+  <canvas id="confetti"></canvas>
+
+  <!-- 1. Loading -->
+  <section id="loader" class="screen">
+    <div class="loader-flower" id="loaderFlower"></div>
+    <p class="italic-text">Menyiapkan sesuatu yang spesial untukmu...</p>
+  </section>
+
+  <!-- 2. Kunci PIN -->
+  <section id="lock" class="screen hidden">
+    <div class="lock-card">
+      <div class="small-flower" data-flower></div>
+      <h2 id="lockTitle"></h2>
+      <p class="muted">Masukkan kode rahasia kita 🌸</p>
+      <div class="dots" id="dots"></div>
+      <div class="keypad" id="keypad"></div>
+    </div>
+  </section>
+
+  <!-- 3. Kotak hadiah -->
+  <section id="gift" class="screen hidden">
+    <p class="italic-text">Ketuk kotak hadiah untuk membukanya 🎁</p>
+    <button id="giftBox" class="gift-box" aria-label="Buka hadiah">
+      <span class="gift-lid"></span><span class="gift-body"></span>
+    </button>
+  </section>
+
+  <!-- 4. Ledakan bunga -->
+  <div id="burst" class="hidden"></div>
+
+  <!-- 5. Halaman utama -->
+  <main id="main-dashboard" class="hidden">
+
+    <!-- Hero + kue -->
+    <section class="hero container text-center">
+      <div class="tagline">🌸 YOUR SPECIAL DAY 🌸</div>
+      <h1 class="hero-title">Happy <em id="heroScript">Birthday</em><span id="heroName"></span></h1>
+      <div class="tagline small" id="heroDate"></div>
+      <div class="hint-pill" id="candleHint">Tap lilin untuk meniupnya! 🎂</div>
+
+      <svg class="cake" viewBox="0 0 220 190" aria-label="Kue ulang tahun">
+        <ellipse cx="110" cy="176" rx="100" ry="8" fill="#f3dfe3"/>
+        <rect x="28" y="124" width="164" height="50" rx="8" fill="#f7c6d4"/>
+        <rect x="28" y="124" width="164" height="12" rx="6" fill="#fff3f5"/>
+        <rect x="52" y="84" width="116" height="42" rx="8" fill="#f4a9c0"/>
+        <rect x="52" y="84" width="116" height="11" rx="5" fill="#fff3f5"/>
+        <rect x="76" y="54" width="68" height="32" rx="7" fill="#f7c6d4"/>
+        <rect x="76" y="54" width="68" height="9" rx="4" fill="#fff3f5"/>
+        <g class="candle" data-i="0"><rect x="87" y="30" width="7" height="26" rx="2" fill="#8ec5ff"/><ellipse class="flame" cx="90.5" cy="23" rx="5" ry="9" fill="#ffd24a"/></g>
+        <g class="candle" data-i="1"><rect x="106" y="28" width="7" height="28" rx="2" fill="#ffd24a"/><ellipse class="flame" cx="109.5" cy="21" rx="5" ry="9" fill="#ffd24a"/></g>
+        <g class="candle" data-i="2"><rect x="125" y="30" width="7" height="26" rx="2" fill="#ffb3c7"/><ellipse class="flame" cx="128.5" cy="23" rx="5" ry="9" fill="#ffd24a"/></g>
+      </svg>
+
+      <div class="wish-card" id="wishCard"></div>
+    </section>
+
+    <!-- Surat -->
+    <section class="container text-center reveal">
+      <div class="letter" id="letter"></div>
+    </section>
+
+    <!-- Buket digital -->
+    <section class="container text-center reveal">
+      <div class="tagline small">— MY FIRST GIFT —</div>
+      <h2 class="section-title">Digital Bouquet</h2>
+      <p class="section-sub">Setiap bunga menyimpan pesan kecil untukmu</p>
+      <div class="bouquet" id="bouquet">
+        <svg class="stems" viewBox="0 0 300 260" preserveAspectRatio="none"></svg>
+        <div class="pot"></div>
+      </div>
+      <div class="bouquet-msg" id="bouquetMsg">Ketuk salah satu bunga 🌷</div>
+    </section>
+
+    <!-- Galeri polaroid -->
+    <section class="container text-center">
+      <div class="tagline small">— MEMORIES —</div>
+      <h2 class="section-title">Galeri Kenangan</h2>
+      <p class="section-sub">Ketuk setiap foto untuk mengungkapnya</p>
+      <div class="polaroid-grid" id="gallery"></div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="container text-center">
+      <div class="tagline small">— OUR STORY —</div>
+      <h2 class="section-title">Jurnal Perjalanan Cinta Kita</h2>
+      <p class="section-sub">Bagaimana takdir mempertemukan kita dan bertumbuh bersama</p>
+      <div class="timeline" id="timeline"><div class="timeline-line"></div></div>
+    </section>
+
+    <!-- Playlist -->
+    <section class="container text-center reveal">
+      <h2 class="section-title">Our Playlist</h2>
+      <p class="section-sub">Pilih lagu yang ingin kamu dengarkan di bawah ini</p>
+      <div class="player">
+        <div class="now">NOW PLAYING</div>
+        <div class="vinyl" id="vinyl"><span data-flower></span></div>
+        <h3 id="songTitle"></h3>
+        <div class="muted" id="songArtist"></div>
+        <div class="progress-row">
+          <span id="timeNow">0:00</span>
+          <input type="range" id="seek" min="0" max="100" value="0">
+          <span id="timeTotal">0:00</span>
+        </div>
+        <div class="controls">
+          <button id="prevBtn" aria-label="Sebelumnya">⏮</button>
+          <button id="playBtn" class="play" aria-label="Putar">▶</button>
+          <button id="nextBtn" aria-label="Berikutnya">⏭</button>
+        </div>
+        <ul class="songlist" id="songlist"></ul>
+      </div>
+    </section>
+
+    <!-- Toples -->
+    <section class="container text-center reveal">
+      <div class="tagline small">— FROM MY HEART TO YOURS —</div>
+      <h2 class="section-title">Reasons I'm Grateful To Know You</h2>
+      <p class="section-sub">Kocok toples dan ambil sebuah catatan 📝</p>
+      <div class="jar" id="jar">
+        <div class="jar-lid"></div>
+        <div class="jar-glass"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <button class="pill-btn" id="shakeBtn">📝 Kocok toplesnya</button>
+      <div class="note-card" id="noteCard">
+        <div class="note-emoji">💌</div>
+        <p id="noteText">Ketuk tombol di atas untuk mengambil catatan.</p>
+        <div class="note-count" id="noteCount"></div>
+      </div>
+    </section>
+
+    <footer class="text-center muted footer">Dibuat dengan 💗 — Selamat ulang tahun!</footer>
+  </main>
+
+  <audio id="audio" preload="none"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
