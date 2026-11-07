@@ -50,20 +50,31 @@
       <div class="tagline">🌸 YOUR SPECIAL DAY 🌸</div>
       <h1 class="hero-title">Happy <em id="heroScript">Birthday</em><span id="heroName"></span></h1>
       <div class="tagline small" id="heroDate"></div>
-      <div class="hint-pill" id="candleHint">Tap lilin untuk meniupnya! 🎂</div>
+      <div class="hint-pill" id="bloomHint">Ketuk bunga untuk membuatnya mekar 🌷</div>
 
-      <svg class="cake" viewBox="0 0 220 190" aria-label="Kue ulang tahun">
-        <ellipse cx="110" cy="176" rx="100" ry="8" fill="#f3dfe3"/>
-        <rect x="28" y="124" width="164" height="50" rx="8" fill="#f7c6d4"/>
-        <rect x="28" y="124" width="164" height="12" rx="6" fill="#fff3f5"/>
-        <rect x="52" y="84" width="116" height="42" rx="8" fill="#f4a9c0"/>
-        <rect x="52" y="84" width="116" height="11" rx="5" fill="#fff3f5"/>
-        <rect x="76" y="54" width="68" height="32" rx="7" fill="#f7c6d4"/>
-        <rect x="76" y="54" width="68" height="9" rx="4" fill="#fff3f5"/>
-        <g class="candle" data-i="0"><rect x="87" y="30" width="7" height="26" rx="2" fill="#8ec5ff"/><ellipse class="flame" cx="90.5" cy="23" rx="5" ry="9" fill="#ffd24a"/></g>
-        <g class="candle" data-i="1"><rect x="106" y="28" width="7" height="28" rx="2" fill="#ffd24a"/><ellipse class="flame" cx="109.5" cy="21" rx="5" ry="9" fill="#ffd24a"/></g>
-        <g class="candle" data-i="2"><rect x="125" y="30" width="7" height="26" rx="2" fill="#ffb3c7"/><ellipse class="flame" cx="128.5" cy="23" rx="5" ry="9" fill="#ffd24a"/></g>
-      </svg>
+      <button class="bloom-wrap" id="bloomBtn" aria-label="Mekarkan bunga">
+        <svg class="bigflower" id="bigFlower" viewBox="0 0 200 230">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffd0e0"/><stop offset="1" stop-color="#ff6fa5"/>
+            </linearGradient>
+          </defs>
+          <path d="M100 125 C100 165 94 195 100 228" stroke="#7fc79a" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M98 190 C70 185 55 170 52 150 C78 152 94 168 98 190Z" fill="#7fc79a" opacity=".85"/>
+          <path d="M100 175 C128 170 143 156 146 136 C122 138 106 154 100 175Z" fill="#7fc79a" opacity=".85"/>
+          <g transform="translate(100 100)">
+            <ellipse class="petal" style="--r:0deg"   cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:45deg"  cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:90deg"  cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:135deg" cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:180deg" cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:225deg" cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:270deg" cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <ellipse class="petal" style="--r:315deg" cx="0" cy="-36" rx="15" ry="36" fill="url(#pg)"/>
+            <circle class="core" r="13" fill="#ffd24a"/>
+          </g>
+        </svg>
+      </button>
 
       <div class="wish-card" id="wishCard"></div>
     </section>

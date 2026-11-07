@@ -2,15 +2,23 @@
    ✏️ BAGIAN INI YANG BISA KAMU UBAH-UBAH (CONFIG)
    ===================================================== */
 const CONFIG = {
-  nama: "Adel",          // nama penerima
-  pengirim: "Unknown",         // nama kamu
-  pin: "24434",             // kode rahasia (6 angka)
-  tanggal: "SEPTEMBER 08 · THE MOST SPECIAL DAY",
+  nama: "Florence",          // nama penerima
+  pengirim: "Gegee",         // nama kamu
+  pin: "290125",             // kode rahasia (6 angka)
+  tanggal: "DECEMBER 29 · THE MOST SPECIAL DAY",
 
   ucapan: {
     judul: "Happy Birthday! Florence yang paling istimewa 🌸",
-    isi: "Dengan cinta yang tidak pernah habis"
+    isi: "Barakallahu fii umrik"
   },
+
+  // teks di atas bunga: [awal, ketukan 1, ketukan 2, ketukan 3]
+  mekar: [
+    "Ketuk bunga untuk membuatnya mekar 🌷",
+    "Semoga hari-harimu penuh keberkahan 🤍",
+    "Semoga Allah beri kesehatan, kebahagiaan, dan kemudahan di setiap langkahmu ✨",
+    "Barakallahu fii umrik. Semoga umurmu penuh berkah 🌸"
+  ],
 
   surat: [
     "Terima kasih sudah hadir dan membawa banyak warna di hidupku.",
@@ -211,19 +219,17 @@ function showMain() {
 $("#heroName").textContent = CONFIG.nama;
 $("#heroDate").textContent = CONFIG.tanggal;
 
-// lilin
-const total = $$(".candle").length;
-let out = 0;
-$$(".candle").forEach(c => c.onclick = () => {
-  if (c.classList.contains("out")) return;
-  c.classList.add("out"); out++;
-  const r = c.getBoundingClientRect();
-  confetti(r.left + r.width / 2, r.top, 50);
-  if (out === total) {
-    $("#candleHint").textContent = "Semoga semua permintaanmu terkabul! ✨";
-    confetti(innerWidth / 2, innerHeight / 2, 160);
-  }
-});
+// bunga mekar (ketuk 3 kali)
+let stage = 0;
+$("#bloomBtn").onclick = () => {
+  stage = (stage + 1) % 4;
+  const f = $("#bigFlower");
+  f.classList.remove("s1", "s2", "s3");
+  if (stage > 0) f.classList.add("s" + stage);
+  $("#bloomHint").textContent = CONFIG.mekar[stage];
+  const r = f.getBoundingClientRect();
+  if (stage > 0) confetti(r.left + r.width / 2, r.top + r.height * .4, stage === 3 ? 160 : 45);
+};
 $("#wishCard").innerHTML = `<b>${CONFIG.ucapan.judul}</b><span class="muted">${CONFIG.ucapan.isi.toUpperCase()}</span>`;
 
 // surat

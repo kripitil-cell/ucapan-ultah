@@ -77,11 +77,17 @@ body{
   font-size:1.2em;text-shadow:0 0 22px rgba(255,111,165,.7);margin:-2px 0}
 .hero-title span{display:block;font-weight:700}
 .hint-pill{display:inline-block;margin:26px 0 8px;padding:7px 16px;border-radius:99px;font-size:.78rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
-.cake{width:220px;display:block;margin:0 auto}
-.candle{cursor:pointer}
-.flame{transform-origin:center bottom;animation:flicker .5s infinite alternate;filter:drop-shadow(0 0 6px #ffb300)}
-.candle.out .flame{opacity:0;transition:.3s}
-@keyframes flicker{to{transform:scale(.9,1.12) rotate(4deg)}}
+.bloom-wrap{display:block;margin:6px auto 0;background:none;border:none;cursor:pointer;width:230px}
+.bigflower{width:100%;overflow:visible;filter:drop-shadow(0 0 18px rgba(255,111,165,.35))}
+.petal{transform-origin:0 0;transform:rotate(var(--r)) scale(.32,.4);opacity:.9;transition:transform 1s cubic-bezier(.2,.9,.3,1.2)}
+.core{transform:scale(.6);transition:transform 1s}
+.bigflower{animation:sway 4s ease-in-out infinite;transform-origin:50% 95%}
+.bigflower.s1 .petal{transform:rotate(var(--r)) scale(.6,.62)}
+.bigflower.s2 .petal{transform:rotate(var(--r)) scale(.85,.85)}
+.bigflower.s3 .petal{transform:rotate(calc(var(--r) + 8deg)) scale(1.08,1.05)}
+.bigflower.s1 .core{transform:scale(.8)} .bigflower.s2 .core{transform:scale(1)} .bigflower.s3 .core{transform:scale(1.25)}
+.bigflower.s3{filter:drop-shadow(0 0 30px rgba(255,111,165,.7))}
+@keyframes sway{50%{transform:rotate(2.5deg)}}
 .wish-card{width:min(420px,100%);margin:30px auto 0;padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.05);
   border:1px solid rgba(255,255,255,.08);font-size:.92rem;line-height:1.6}
 .wish-card b{display:block;margin-bottom:4px}
