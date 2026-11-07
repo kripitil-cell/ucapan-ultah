@@ -8,7 +8,7 @@ const CONFIG = {
   tanggal: "JANUARI 24 · THE MOST SPECIAL DAY",
 
   ucapan: {
-    judul: "Happy Birthday! Florence yang paling istimewa 🌸",
+    judul: "Happy Birthday! Unknown yang paling istimewa 🌸",
     isi: "Barakallahu fii umrik"
   },
 
