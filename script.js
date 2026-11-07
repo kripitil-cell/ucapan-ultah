@@ -2,10 +2,10 @@
    ✏️ BAGIAN INI YANG BISA KAMU UBAH-UBAH (CONFIG)
    ===================================================== */
 const CONFIG = {
-  nama: "Florence",          // nama penerima
-  pengirim: "Gegee",         // nama kamu
-  pin: "290125",             // kode rahasia (6 angka)
-  tanggal: "DECEMBER 29 · THE MOST SPECIAL DAY",
+  nama: "Unknown",          // nama penerima
+  pengirim: "Jefri",         // nama kamu
+  pin: "24434",             // kode rahasia (6 angka)
+  tanggal: "JANUARI 24 · THE MOST SPECIAL DAY",
 
   ucapan: {
     judul: "Happy Birthday! Florence yang paling istimewa 🌸",
